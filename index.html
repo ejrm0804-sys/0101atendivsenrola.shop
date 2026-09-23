@@ -1,1367 +1,2478 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TechStore | Produtos Eletrônicos e Acessórios</title>
-
-    <meta name="description"
-          content="Encontre smartphones, notebooks, fones, acessórios e outros produtos eletrônicos. Confira produtos, preços, condições de pagamento e informações da loja.">
-
-    <meta name="robots" content="index, follow">
-
-    <link rel="canonical" href="https://www.seusite.com.br/">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="TechStore | Produtos Eletrônicos">
-    <meta property="og:description"
-          content="Produtos eletrônicos e acessórios com informações claras de preço, pagamento, entrega e garantia.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.seusite.com.br/">
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #222;
-            background: #f7f8fa;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .container {
-            width: min(1180px, 92%);
-            margin: auto;
-        }
-
-        /* TOPO */
-
-        .topbar {
-            background: #111827;
-            color: #fff;
-            font-size: 14px;
-            padding: 8px 0;
-        }
-
-        .topbar-content {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        header {
-            background: #fff;
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            min-height: 74px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: 800;
-            color: #2563eb;
-        }
-
-        .logo span {
-            color: #111827;
-        }
-
-        nav {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-
-        nav a {
-            font-size: 15px;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        nav a:hover {
-            color: #2563eb;
-        }
-
-        .btn {
-            display: inline-block;
-            border: none;
-            cursor: pointer;
-            border-radius: 8px;
-            padding: 12px 20px;
-            font-weight: 700;
-            transition: .2s;
-        }
-
-        .btn-primary {
-            background: #2563eb;
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: #1d4ed8;
-        }
-
-        .btn-light {
-            background: #fff;
-            color: #1d4ed8;
-        }
-
-        /* HERO */
-
-        .hero {
-            background: linear-gradient(135deg, #eff6ff, #ffffff);
-            padding: 70px 0;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .hero h1 {
-            font-size: clamp(35px, 5vw, 58px);
-            line-height: 1.1;
-            margin-bottom: 20px;
-            color: #111827;
-        }
-
-        .hero h1 span {
-            color: #2563eb;
-        }
-
-        .hero p {
-            color: #4b5563;
-            font-size: 18px;
-            max-width: 650px;
-            margin-bottom: 28px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .hero-card {
-            background: #fff;
-            padding: 25px;
-            border-radius: 18px;
-            box-shadow: 0 15px 45px rgba(0,0,0,.09);
-        }
-
-        .hero-card img {
-            width: 100%;
-            height: 330px;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-
-        /* BENEFÍCIOS */
-
-        .benefits {
-            background: #fff;
-            padding: 25px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .benefit-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .benefit {
-            text-align: center;
-            padding: 12px;
-        }
-
-        .benefit-icon {
-            font-size: 30px;
-            margin-bottom: 7px;
-        }
-
-        .benefit strong {
-            display: block;
-        }
-
-        .benefit span {
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        /* SEÇÕES */
-
-        section {
-            padding: 70px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 34px;
-            margin-bottom: 8px;
-        }
-
-        .section-title p {
-            color: #6b7280;
-        }
-
-        /* PRODUTOS */
-
-        .products {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
-        }
-
-        .product {
-            background: #fff;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid #e5e7eb;
-            transition: .2s;
-        }
-
-        .product:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0,0,0,.08);
-        }
-
-        .product-image {
-            height: 220px;
-            background: #f3f4f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .category {
-            color: #2563eb;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .product h3 {
-            margin: 6px 0 10px;
-            font-size: 18px;
-        }
-
-        .description {
-            color: #6b7280;
-            font-size: 14px;
-            min-height: 45px;
-        }
-
-        .price {
-            margin: 15px 0;
-        }
-
-        .old-price {
-            color: #9ca3af;
-            text-decoration: line-through;
-            font-size: 13px;
-        }
-
-        .current-price {
-            display: block;
-            font-size: 25px;
-            font-weight: 800;
-            color: #111827;
-        }
-
-        .payment {
-            color: #4b5563;
-            font-size: 13px;
-            margin-bottom: 15px;
-        }
-
-        .product .btn {
-            width: 100%;
-            text-align: center;
-        }
-
-        /* CATEGORIAS */
-
-        .categories {
-            background: #fff;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .category-box {
-            padding: 30px 20px;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            text-align: center;
-            background: #fafafa;
-        }
-
-        .category-box .icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        .category-box h3 {
-            margin-bottom: 5px;
-        }
-
-        .category-box p {
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        /* SOBRE */
-
-        .about {
-            background: #111827;
-            color: #fff;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about h2 {
-            font-size: 35px;
-            margin-bottom: 18px;
-        }
-
-        .about p {
-            color: #d1d5db;
-            margin-bottom: 15px;
-        }
-
-        .about-list {
-            list-style: none;
-        }
-
-        .about-list li {
-            margin-bottom: 12px;
-        }
-
-        /* INFORMAÇÕES */
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .info-card {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 25px;
-        }
-
-        .info-card h3 {
-            margin-bottom: 12px;
-        }
-
-        .info-card p {
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        /* FAQ */
-
-        .faq {
-            max-width: 850px;
-            margin: auto;
-        }
-
-        details {
-            background: #fff;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 18px 20px;
-            margin-bottom: 12px;
-        }
-
-        summary {
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        details p {
-            color: #6b7280;
-            margin-top: 12px;
-        }
-
-        /* CONTATO */
-
-        .contact {
-            background: #eff6ff;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 35px;
-        }
-
-        .contact-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 30px;
-        }
-
-        .contact-card h3 {
-            margin-bottom: 15px;
-        }
-
-        .contact-item {
-            margin-bottom: 14px;
-        }
-
-        .contact-item strong {
-            display: block;
-        }
-
-        .contact-item span {
-            color: #6b7280;
-        }
-
-        form {
-            display: grid;
-            gap: 14px;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            padding: 13px;
-            font: inherit;
-        }
-
-        textarea {
-            min-height: 130px;
-            resize: vertical;
-        }
-
-        /* FOOTER */
-
-        footer {
-            background: #0b1120;
-            color: #fff;
-            padding: 50px 0 20px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr 1fr;
-            gap: 30px;
-        }
-
-        footer h3,
-        footer h4 {
-            margin-bottom: 14px;
-        }
-
-        footer p,
-        footer a {
-            color: #9ca3af;
-            font-size: 14px;
-        }
-
-        footer a {
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        footer a:hover {
-            color: #fff;
-        }
-
-        .copyright {
-            border-top: 1px solid #1f2937;
-            margin-top: 35px;
-            padding-top: 20px;
-            color: #6b7280;
-            font-size: 13px;
-            text-align: center;
-        }
-
-        /* COOKIE */
-
-        .cookie {
-            position: fixed;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            max-width: 850px;
-            margin: auto;
-            background: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0 10px 40px rgba(0,0,0,.18);
-            border-radius: 12px;
-            padding: 18px;
-            z-index: 999;
-            display: none;
-        }
-
-        .cookie-content {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .cookie p {
-            font-size: 13px;
-            color: #555;
-        }
-
-        /* RESPONSIVO */
-
-        @media (max-width: 900px) {
-
-            nav {
-                display: none;
-            }
-
-            .hero-grid,
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .products {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .category-grid,
-            .benefit-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .products,
-            .category-grid,
-            .benefit-grid,
-            .info-grid,
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 45px 0;
-            }
-
-            section {
-                padding: 50px 0;
-            }
-
-            .hero-card img {
-                height: 240px;
-            }
-
-            .cookie-content {
-                flex-direction: column;
-                align-items: stretch;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
+
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#f4f8ff">
+
+<title>Consulta de negociação de dívidas</title>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
+
+<meta name="robots" content="index,follow">
+
+<meta
+    name="description"
+    content="Página independente para consulta de informações sobre negociação de dívidas."
+>
+
+<meta name="theme-color" content="#f4f8ff">
+
+<title>Consulta de negociação de dívidas</title>
+
+<style>
+
+:root{
+    --blue:#0b2d69;
+    --blue-light:#1559d6;
+    --green:#08b77a;
+    --green-dark:#04a66e;
+    --yellow:#ffc928;
+
+    --bg:#f4f8ff;
+    --white:#ffffff;
+
+    --text:#102d67;
+    --muted:#6680ad;
+
+    --border:#e1eaf7;
+}
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    padding:0;
+
+    width:100%;
+    min-height:100vh;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color:var(--text);
+
+    background:
+        radial-gradient(
+            circle at 100% 8%,
+            rgba(42,130,255,.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 0% 85%,
+            rgba(0,190,130,.10),
+            transparent 28%
+        ),
+        var(--bg);
+
+    padding-bottom:95px;
+}
+
+
+/* =========================================
+   PÁGINA
+========================================= */
+
+.page{
+    width:100%;
+    max-width:500px;
+
+    min-height:100svh;
+
+    margin:auto;
+
+    padding:
+        12px
+        12px
+        30px;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:
+        8px
+        5px
+        17px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-icon{
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green),
+            var(--blue-light)
+        );
+
+    color:#fff;
+
+    font-size:22px;
+    font-weight:900;
+
+    box-shadow:
+        0 8px 20px
+        rgba(21,89,214,.20);
+}
+
+.brand-text{
+    line-height:1.05;
+}
+
+.brand-text small{
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#607ba7;
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:.7px;
+    text-transform:uppercase;
+}
+
+.brand-text strong{
+    display:block;
+
+    color:var(--blue);
+
+    font-size:16px;
+    font-weight:900;
+
+    letter-spacing:-.3px;
+}
+
+.security{
+    display:flex;
+    align-items:center;
+    gap:5px;
+
+    color:#5876a5;
+
+    font-size:10px;
+    font-weight:700;
+}
+
+
+/* =========================================
+   PROGRESSO
+========================================= */
+
+.progress-area{
+    padding:
+        0
+        5px
+        18px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:8px;
+
+    color:#6a82aa;
+
+    font-size:11px;
+    font-weight:800;
+}
+
+.progress{
+    width:100%;
+    height:7px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#dfe9f7;
+}
+
+.progress-fill{
+    width:33.33%;
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #08b77a,
+            #19cf91
+        );
+
+    animation:
+        progressIn .9s ease-out;
+}
+
+@keyframes progressIn{
+
+    from{
+        width:0;
+    }
+
+    to{
+        width:33.33%;
+    }
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card{
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.98);
+
+    border:
+        1px solid
+        rgba(219,229,244,.85);
+
+    border-radius:27px;
+
+    box-shadow:
+        0 20px 55px rgba(35,74,130,.12),
+        0 3px 10px rgba(35,74,130,.05);
+
+    animation:
+        cardIn .65s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes cardIn{
+
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+    padding:
+        27px
+        19px
+        20px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+
+    padding:
+        8px
+        13px;
+
+    border-radius:50px;
+
+    background:#e7fbf3;
+
+    color:#069865;
+
+    font-size:11px;
+    font-weight:900;
+
+    letter-spacing:.25px;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(8,183,122,.11);
+
+    animation:
+        pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        box-shadow:
+            0 0 0 4px
+            rgba(8,183,122,.10);
+    }
+
+    50%{
+        box-shadow:
+            0 0 0 8px
+            rgba(8,183,122,0);
+    }
+}
+
+h1{
+    margin:
+        18px 0 0;
+
+    color:var(--blue);
+
+    font-size:39px;
+    line-height:1.02;
+
+    letter-spacing:-1.8px;
+
+    font-weight:950;
+}
+
+h1 span{
+    color:var(--blue-light);
+}
+
+.intro{
+    margin:
+        15px 0 0;
+
+    color:var(--muted);
+
+    font-size:17px;
+    line-height:1.48;
+}
+
+
+/* =========================================
+   ILUSTRAÇÃO
+========================================= */
+
+.illustration{
+    position:relative;
+
+    height:160px;
+
+    margin:
+        18px 0
+        2px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.blob{
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9faec,
+            #dbeaff
+        );
+
+    animation:
+        float 5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+.phone{
+    position:relative;
+    z-index:2;
+
+    width:104px;
+    height:151px;
+
+    border:
+        7px solid
+        #1760d9;
+
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f9fcff,
+            #e7f0ff
+        );
+
+    transform:rotate(7deg);
+
+    box-shadow:
+        0 17px 30px
+        rgba(20,83,180,.22);
+
+    animation:
+        phoneIn .8s ease-out;
+}
+
+@keyframes phoneIn{
+
+    from{
+        opacity:0;
+
+        transform:
+            rotate(15deg)
+            translateY(12px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            rotate(7deg)
+            translateY(0);
+    }
+}
+
+.phone-notch{
+    position:absolute;
+
+    top:-1px;
+    left:50%;
+
+    width:41px;
+    height:12px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        0 0 10px 10px;
+
+    background:#1760d9;
+}
+
+.phone-content{
+    position:absolute;
+
+    left:12px;
+    right:12px;
+    top:39px;
+
+    height:70px;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    box-shadow:
+        0 4px 12px
+        rgba(30,70,130,.08);
+}
+
+.check{
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #18c989,
+            #08a96e
+        );
+
+    color:#fff;
+
+    font-size:20px;
+    font-weight:900;
+}
+
+.shield{
+    position:absolute;
+
+    z-index:3;
+
+    right:52px;
+    bottom:8px;
+
+    width:56px;
+    height:56px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #11c88a,
+            #04a86e
+        );
+
+    color:#fff;
+
+    font-size:25px;
+
+    box-shadow:
+        0 10px 22px
+        rgba(4,168,110,.25);
+
+    animation:
+        shieldIn .8s .15s both;
+}
+
+@keyframes shieldIn{
+
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+
+/* =========================================
+   BENEFÍCIOS
+========================================= */
+
+.features{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:9px;
+
+    margin-top:8px;
+}
+
+.feature{
+    padding:
+        14px
+        10px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:16px;
+
+    background:#f8fbff;
+
+    transition:
+        transform .2s ease;
+}
+
+.feature:active{
+    transform:scale(.98);
+}
+
+.feature-icon{
+    width:39px;
+    height:39px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    font-size:18px;
+    font-weight:900;
+}
+
+.feature:nth-child(1)
+.feature-icon{
+    background:#e5edff;
+    color:#2865d8;
+}
+
+.feature:nth-child(2)
+.feature-icon{
+    background:#e5faf2;
+    color:#08a970;
+}
+
+.feature:nth-child(3)
+.feature-icon{
+    background:#fff4d6;
+    color:#e7a900;
+}
+
+.feature:nth-child(4)
+.feature-icon{
+    background:#eee8ff;
+    color:#7446d9;
+}
+
+.feature strong{
+    display:block;
+
+    margin-top:8px;
+
+    color:var(--blue);
+
+    font-size:13px;
+    line-height:1.2;
+}
+
+.feature small{
+    display:block;
+
+    margin-top:4px;
+
+    color:#7185a7;
+
+    font-size:10px;
+    line-height:1.3;
+}
+
+
+/* =========================================
+   BOTÃO PRINCIPAL
+========================================= */
+
+.cta{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+
+    width:100%;
+    min-height:64px;
+
+    margin-top:20px;
+    padding:
+        10px
+        15px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #08c88a,
+            #04aa71
+        );
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:17px;
+    font-weight:900;
+
+    box-shadow:
+        0 13px 28px
+        rgba(4,174,117,.27);
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease;
+}
+
+.cta:active{
+    transform:scale(.98);
+}
+
+.cta-arrow{
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.18);
+
+    font-size:20px;
+}
+
+
+/* =========================================
+   TEMPO
+========================================= */
+
+.time{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+
+    margin:
+        12px 0 0;
+
+    color:#6680ad;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+
+/* =========================================
+   AVISO
+========================================= */
+
+.warning{
+    display:flex;
+    gap:10px;
+
+    margin-top:19px;
+
+    padding:13px;
+
+    border:
+        1px solid
+        #f1df9e;
+
+    border-radius:15px;
+
+    background:#fffaf0;
+
+    color:#69717c;
+
+    font-size:10px;
+    line-height:1.5;
+}
+
+.warning-icon{
+    flex:none;
+
+    width:28px;
+    height:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:9px;
+
+    background:#fff0bd;
+
+    color:#c38b00;
+
+    font-size:15px;
+    font-weight:900;
+}
+
+.warning strong{
+    color:#45505f;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+    padding:
+        18px
+        17px
+        20px;
+
+    border-top:
+        1px solid
+        var(--border);
+
+    text-align:center;
+
+    color:#7186a8;
+
+    font-size:9px;
+    line-height:1.5;
+}
+
+.steps{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+
+    margin-top:13px;
+}
+
+.step{
+    width:24px;
+    height:5px;
+
+    border-radius:20px;
+
+    background:#dce6f4;
+}
+
+.step.active{
+    width:37px;
+
+    background:#08b77a;
+}
+
+
+/* =========================================
+   BOTÃO FLUTUANTE DE ACESSO
+========================================= */
+
+.floating-link{
+    position:fixed;
+
+    left:50%;
+    bottom:18px;
+
+    z-index:9999;
+
+    width:
+        calc(100% - 28px);
+
+    max-width:470px;
+
+    min-height:58px;
+
+    transform:
+        translateX(-50%);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    padding:
+        10px
+        16px;
+
+    border:0;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #08c88a,
+            #04aa71
+        );
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:16px;
+    font-weight:900;
+
+    box-shadow:
+        0 12px 30px
+        rgba(4,174,117,.35);
+
+    animation:
+        floatingIn .7s
+        cubic-bezier(.2,.8,.2,1);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+@keyframes floatingIn{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateX(-50%)
+            translateY(25px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+}
+
+.floating-link:hover{
+    box-shadow:
+        0 16px 35px
+        rgba(4,174,117,.42);
+}
+
+.floating-link:active{
+    transform:
+        translateX(-50%)
+        scale(.97);
+}
+
+.floating-link-icon{
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.18);
+
+    font-size:20px;
+}
+
+.floating-link-arrow{
+    font-size:21px;
+}
+
+
+/* =========================================
+   MOBILE PEQUENO
+========================================= */
+
+@media(max-width:360px){
+
+    .page{
+        padding:
+            9px
+            9px
+            22px;
+    }
+
+    .hero{
+        padding:
+            23px
+            16px
+            17px;
+    }
+
+    h1{
+        font-size:34px;
+    }
+
+    .intro{
+        font-size:15px;
+    }
+
+    .illustration{
+        height:145px;
+    }
+
+    .blob{
+        width:135px;
+        height:135px;
+    }
+
+    .phone{
+        width:92px;
+        height:138px;
+    }
+
+    .shield{
+        right:42px;
+
+        width:50px;
+        height:50px;
+    }
+
+    .feature{
+        padding:
+            12px
+            8px;
+    }
+
+    .feature strong{
+        font-size:12px;
+    }
+
+    .cta{
+        font-size:15px;
+    }
+
+    .floating-link{
+        width:
+            calc(100% - 22px);
+
+        bottom:12px;
+
+        min-height:54px;
+
+        border-radius:16px;
+
+        font-size:14px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     BOTÃO FLUTUANTE
+========================================= -->
+
+<a
+    class="floating-link"
+    href="https://elegant-desenrola.netlify.app/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Acessar consulta"
+>
+
+    <span class="floating-link-icon">
+        ↗
+    </span>
+
+    <span>
+        Acessar consulta
+    </span>
+
+    <span class="floating-link-arrow">
+        →
+    </span>
+
+</a>
+
+
+<main class="page">
+
+
+    <!-- =====================================
+         CABEÇALHO
+    ====================================== -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                D
+            </div>
+
+            <div class="brand-text">
+
+                <small>
+                    CONSULTA ONLINE
+                </small>
+
+                <strong>
+                    Negociação de dívidas
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="security">
+            🔒 Seguro
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+         PROGRESSO
+    ====================================== -->
+
+    <section
+        class="progress-area"
+        aria-label="Progresso da consulta"
+    >
+
+        <div class="progress-info">
+
+            <span>
+                Etapa 1 de 3
+            </span>
+
+            <span>
+                33%
+            </span>
+
+        </div>
+
+
+        <div class="progress">
+
+            <div class="progress-fill"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         CARD
+    ====================================== -->
+
+    <section class="card">
+
+
+        <div class="hero">
+
+
+            <!-- BADGE -->
+
+            <div class="badge">
+
+                <span class="badge-dot"></span>
+
+                CONSULTA ONLINE
+
+            </div>
+
+
+            <!-- TÍTULO -->
+
+            <h1>
+
+                Já começou a
+
+                <span>
+                    desenrolar?
+                </span>
+
+            </h1>
+
+
+            <p class="intro">
+
+                Consulte as informações disponíveis
+                e confira as opções de negociação.
+
+            </p>
+
+
+            <!-- =================================
+                 ILUSTRAÇÃO
+            ================================== -->
+
+            <div class="illustration">
+
+                <div class="blob"></div>
+
+
+                <div class="phone">
+
+                    <div class="phone-notch"></div>
+
+
+                    <div class="phone-content">
+
+                        <div class="check">
+                            ✓
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="shield">
+                    ✓
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 BENEFÍCIOS
+            ================================== -->
+
+            <div class="features">
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ⌕
+                    </div>
+
+                    <strong>
+                        Consulte
+                    </strong>
+
+                    <small>
+                        Veja as informações disponíveis
+                    </small>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <strong>
+                        Negocie
+                    </strong>
+
+                    <small>
+                        Confira as opções disponíveis
+                    </small>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ◷
+                    </div>
+
+                    <strong>
+                        Economize tempo
+                    </strong>
+
+                    <small>
+                        Processo simples e online
+                    </small>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ◆
+                    </div>
+
+                    <strong>
+                        Mais segurança
+                    </strong>
+
+                    <small>
+                        Confira o domínio antes de prosseguir
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================
+                 BOTÃO INTERNO
+            ================================== -->
+
+            <a
+                class="cta"
+                href="https://elegant-desenrola.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <span>
+                    Prosseguir para a consulta
+                </span>
+
+                <span class="cta-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <!-- TEMPO -->
+
+            <div class="time">
+
+                <span>
+                    ⏱
+                </span>
+
+                <span>
+                    Consulta em menos de 2 minutos
+                </span>
+
+            </div>
+
+
+            <!-- =================================
+                 AVISO
+            ================================== -->
+
+            <div class="warning">
+
+                <div class="warning-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <strong>
+                        Importante:
+                    </strong>
+
+                    esta é uma página independente e não
+                    representa, por si só, um canal oficial
+                    do Governo Federal.
+
+                    Verifique a origem e o domínio antes
+                    de fornecer dados pessoais.
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="footer">
+
+            Consulte informações oficiais diretamente
+            em canais governamentais antes de compartilhar
+            dados pessoais.
+
+
+            <div class="steps">
+
+                <span class="step active"></span>
+
+                <span class="step"></span>
+
+                <span class="step"></span>
+
+            </div>
+
+        </footer>
+
+
+    </section>
+
+
+</main>
+
+</body>
+
+</html>
+
+<style>
+:root{
+    --blue:#0b2d69;
+    --blue2:#1559d6;
+    --green:#08b77a;
+    --green2:#04a66e;
+    --yellow:#ffc928;
+    --bg:#f4f8ff;
+    --text:#102d67;
+    --muted:#6680ad;
+    --border:#e1eaf7;
+    --white:#fff;
+}
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+body{
+    background:
+        radial-gradient(
+            circle at 100% 10%,
+            rgba(42,130,255,.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 0% 85%,
+            rgba(0,190,130,.10),
+            transparent 30%
+        ),
+        var(--bg);
+
+    color:var(--text);
+}
+
+/* =========================
+   PÁGINA
+========================= */
+
+.page{
+    width:100%;
+    max-width:500px;
+    min-height:100svh;
+    margin:auto;
+    padding:16px 13px 25px;
+}
+
+/* =========================
+   TOPO
+========================= */
+
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:8px 6px 18px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.brand-icon{
+    width:46px;
+    height:46px;
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #08bd7d,
+            #1262db
+        );
+
+    color:#fff;
+    font-size:25px;
+    font-weight:900;
+
+    box-shadow:
+        0 8px 20px rgba(21,89,214,.20);
+}
+
+.brand-name{
+    line-height:1;
+}
+
+.brand-name small{
+    display:block;
+    margin-bottom:4px;
+
+    color:#496b9e;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.8px;
+}
+
+.brand-name strong{
+    display:block;
+    font-size:17px;
+    font-weight:900;
+    letter-spacing:-.5px;
+}
+
+.security{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    color:#5072a7;
+    font-size:10px;
+    font-weight:700;
+}
+
+/* =========================
+   PROGRESSO
+========================= */
+
+.progress-area{
+    padding:0 5px 18px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:9px;
+
+    color:#6680ad;
+    font-size:11px;
+    font-weight:800;
+}
+
+.progress-bar{
+    width:100%;
+    height:7px;
+
+    overflow:hidden;
+    border-radius:20px;
+    background:#dfe9f7;
+}
+
+.progress-fill{
+    width:33.33%;
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #08b77a,
+            #19cf91
+        );
+
+    animation:progress .9s ease-out;
+}
+
+@keyframes progress{
+    from{width:0}
+    to{width:33.33%}
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    position:relative;
+    overflow:hidden;
+
+    background:rgba(255,255,255,.97);
+
+    border:1px solid rgba(219,229,244,.8);
+    border-radius:27px;
+
+    box-shadow:
+        0 20px 55px rgba(35,74,130,.12),
+        0 3px 10px rgba(35,74,130,.05);
+
+    animation:
+        cardIn .65s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    padding:28px 20px 20px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+
+    padding:8px 13px;
+
+    border-radius:50px;
+
+    background:#e7fbf3;
+    color:#069865;
+
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:.3px;
+}
+
+.badge-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+    background:#08b77a;
+
+    box-shadow:
+        0 0 0 4px rgba(8,183,122,.12);
+
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        box-shadow:
+            0 0 0 4px rgba(8,183,122,.10);
+    }
+
+    50%{
+        box-shadow:
+            0 0 0 8px rgba(8,183,122,0);
+    }
+}
+
+.hero h1{
+    margin:18px 0 0;
+
+    font-size:39px;
+    line-height:1.02;
+    letter-spacing:-1.8px;
+
+    font-weight:950;
+
+    color:var(--blue);
+}
+
+.hero h1 span{
+    color:var(--blue2);
+}
+
+.hero p{
+    margin:15px 0 0;
+
+    color:var(--muted);
+
+    font-size:17px;
+    line-height:1.45;
+}
+
+/* =========================
+   ILUSTRAÇÃO
+========================= */
+
+.illustration{
+    position:relative;
+
+    height:165px;
+    margin:20px 0 4px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.blob{
+    position:absolute;
+
+    width:155px;
+    height:155px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9faec,
+            #dbeaff
+        );
+
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-6px);
+    }
+}
+
+.phone{
+    position:relative;
+    z-index:2;
+
+    width:105px;
+    height:155px;
+
+    border:7px solid #1760d9;
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f9fcff,
+            #e7f0ff
+        );
+
+    transform:
+        rotate(7deg);
+
+    box-shadow:
+        0 17px 30px rgba(20,83,180,.22);
+
+    animation:phoneIn .8s ease-out;
+}
+
+@keyframes phoneIn{
+    from{
+        opacity:0;
+        transform:
+            rotate(14deg)
+            translateY(12px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            rotate(7deg)
+            translateY(0);
+    }
+}
+
+.phone-notch{
+    position:absolute;
+
+    top:0;
+    left:50%;
+
+    width:42px;
+    height:12px;
+
+    transform:translateX(-50%);
+
+    border-radius:0 0 10px 10px;
+
+    background:#1760d9;
+}
+
+.phone-content{
+    position:absolute;
+
+    left:13px;
+    right:13px;
+    top:40px;
+
+    height:70px;
+
+    border-radius:12px;
+
+    background:#fff;
+
+    box-shadow:
+        0 4px 12px rgba(30,70,130,.08);
+}
+
+.check{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:38px;
+    height:38px;
+
+    transform:translate(-50%,-50%);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#16bd7d;
+    color:#fff;
+
+    font-size:20px;
+    font-weight:900;
+}
+
+.shield{
+    position:absolute;
+
+    z-index:3;
+
+    right:55px;
+    bottom:8px;
+
+    width:57px;
+    height:57px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #11c88a,
+            #04a86e
+        );
+
+    color:#fff;
+
+    font-size:26px;
+
+    box-shadow:
+        0 10px 22px rgba(4,168,110,.25);
+
+    animation:shieldIn .8s .15s both;
+}
+
+@keyframes shieldIn{
+    from{
+        opacity:0;
+        transform:scale(.7);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   BENEFÍCIOS
+========================= */
+
+.features{
+    margin-top:14px;
+
+    display:grid;
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:9px;
+}
+
+.feature{
+    padding:15px 11px;
+
+    text-align:center;
+
+    border:1px solid var(--border);
+    border-radius:16px;
+
+    background:#f8fbff;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.feature:active{
+    transform:scale(.98);
+}
+
+.feature-icon{
+    width:39px;
+    height:39px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    font-size:18px;
+    font-weight:900;
+}
+
+.feature:nth-child(1) .feature-icon{
+    background:#e5edff;
+    color:#2865d8;
+}
+
+.feature:nth-child(2) .feature-icon{
+    background:#e5faf2;
+    color:#08a970;
+}
+
+.feature:nth-child(3) .feature-icon{
+    background:#fff4d6;
+    color:#e7a900;
+}
+
+.feature:nth-child(4) .feature-icon{
+    background:#eee8ff;
+    color:#7446d9;
+}
+
+.feature strong{
+    display:block;
+
+    margin-top:9px;
+
+    font-size:13px;
+    line-height:1.2;
+
+    color:var(--blue);
+}
+
+.feature small{
+    display:block;
+
+    margin-top:4px;
+
+    font-size:10px;
+    line-height:1.3;
+
+    color:#7185a7;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    width:100%;
+    min-height:64px;
+
+    margin-top:20px;
+    padding:10px 16px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #08c88a,
+            #04aa71
+        );
+
+    color:#fff;
+    text-decoration:none;
+
+    font-size:17px;
+    font-weight:900;
+
+    box-shadow:
+        0 13px 28px rgba(4,174,117,.27);
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease;
+}
+
+.cta:active{
+    transform:scale(.98);
+}
+
+.cta-arrow{
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.18);
+
+    font-size:20px;
+}
+
+/* =========================
+   TEMPO
+========================= */
+
+.time{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+
+    margin:12px 0 0;
+
+    color:#6680ad;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+/* =========================
+   AVISO
+========================= */
+
+.warning{
+    display:flex;
+    gap:10px;
+
+    margin-top:19px;
+    padding:13px;
+
+    border:1px solid #f1df9e;
+    border-radius:15px;
+
+    background:#fffaf0;
+
+    color:#69717c;
+
+    font-size:10px;
+    line-height:1.5;
+}
+
+.warning-icon{
+    flex:none;
+
+    width:28px;
+    height:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:9px;
+
+    background:#fff0bd;
+
+    color:#c38b00;
+
+    font-weight:900;
+}
+
+.warning strong{
+    color:#45505f;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.footer{
+    padding:18px 18px 20px;
+
+    text-align:center;
+
+    border-top:1px solid var(--border);
+
+    color:#7186a8;
+
+    font-size:9px;
+    line-height:1.5;
+}
+
+/* =========================
+   INDICADOR
+========================= */
+
+.steps{
+    display:flex;
+    justify-content:center;
+    gap:6px;
+
+    margin-top:13px;
+}
+
+.step{
+    width:24px;
+    height:5px;
+
+    border-radius:20px;
+
+    background:#dce6f4;
+}
+
+.step.active{
+    width:37px;
+    background:#08b77a;
+}
+
+/* =========================
+   MOBILE PEQUENO
+========================= */
+
+@media(max-width:360px){
+
+    .page{
+        padding:10px 10px 20px;
+    }
+
+    .hero{
+        padding:23px 17px 17px;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .illustration{
+        height:145px;
+    }
+
+    .phone{
+        width:92px;
+        height:138px;
+    }
+
+    .blob{
+        width:135px;
+        height:135px;
+    }
+
+    .shield{
+        right:42px;
+        width:50px;
+        height:50px;
+    }
+
+    .feature{
+        padding:12px 8px;
+    }
+
+    .feature strong{
+        font-size:12px;
+    }
+
+    .cta{
+        font-size:15px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- BARRA SUPERIOR -->
-<div class="topbar">
-    <div class="container topbar-content">
-        <span>Compra segura e atendimento ao cliente</span>
-        <span>Segunda a sexta: 9h às 18h</span>
-    </div>
-</div>
+<main class="page">
 
-<!-- HEADER -->
-<header>
-    <div class="container header-content">
+    <!-- TOPO -->
 
-        <a href="#" class="logo">
-            Tech<span>Store</span>
-        </a>
+    <header class="header">
 
-        <nav>
-            <a href="#produtos">Produtos</a>
-            <a href="#categorias">Categorias</a>
-            <a href="#sobre">Sobre nós</a>
-            <a href="#faq">Dúvidas</a>
-            <a href="#contato">Contato</a>
-        </nav>
+        <div class="brand">
 
-        <a href="#produtos" class="btn btn-primary">
-            Ver produtos
-        </a>
+            <div class="brand-icon">
+                D
+            </div>
 
-    </div>
-</header>
+            <div class="brand-name">
+                <small>CONSULTA</small>
+                <strong>Negociação de dívidas</strong>
+            </div>
 
-<!-- HERO -->
-<section class="hero">
+        </div>
 
-    <div class="container hero-grid">
+        <div class="security">
+            🔒 Seguro
+        </div>
 
-        <div>
+    </header>
+
+
+    <!-- PROGRESSO -->
+
+    <section class="progress-area">
+
+        <div class="progress-top">
+            <span>Etapa 1 de 3</span>
+            <span>33%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+    </section>
+
+
+    <!-- CARD -->
+
+    <section class="card">
+
+        <div class="hero">
+
+            <div class="badge">
+                <span class="badge-dot"></span>
+                CONSULTA ONLINE
+            </div>
+
 
             <h1>
-                Tecnologia para o seu
-                <span>dia a dia</span>
+                Já começou a
+                <span>desenrolar?</span>
             </h1>
 
-            <p>
-                Encontre produtos eletrônicos e acessórios selecionados
-                para trabalho, entretenimento, estudos e uso pessoal.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#produtos" class="btn btn-primary">
-                    Ver produtos
-                </a>
-
-                <a href="#contato" class="btn"
-                   style="background:#e5edff;color:#1d4ed8;">
-                    Fale conosco
-                </a>
-            </div>
-
-        </div>
-
-        <div class="hero-card">
-
-            <!-- SUBSTITUA PELA IMAGEM REAL DA SUA LOJA -->
-            <img
-                src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=900&q=80"
-                alt="Produtos eletrônicos">
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- BENEFÍCIOS -->
-<section class="benefits">
-
-    <div class="container benefit-grid">
-
-        <div class="benefit">
-            <div class="benefit-icon">🔒</div>
-            <strong>Compra segura</strong>
-            <span>Ambiente protegido</span>
-        </div>
-
-        <div class="benefit">
-            <div class="benefit-icon">🚚</div>
-            <strong>Entrega</strong>
-            <span>Consulte prazo para seu CEP</span>
-        </div>
-
-        <div class="benefit">
-            <div class="benefit-icon">💳</div>
-            <strong>Pagamento</strong>
-            <span>Consulte as opções disponíveis</span>
-        </div>
-
-        <div class="benefit">
-            <div class="benefit-icon">💬</div>
-            <strong>Atendimento</strong>
-            <span>Suporte ao cliente</span>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- PRODUTOS -->
-<section id="produtos">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>Produtos em destaque</h2>
 
             <p>
-                Confira alguns dos produtos disponíveis em nossa loja.
+                Consulte as informações disponíveis
+                e confira as opções de negociação.
             </p>
 
-        </div>
 
-        <div class="products">
+            <!-- ILUSTRAÇÃO -->
 
-            <!-- PRODUTO 1 -->
-            <article class="product">
+            <div class="illustration">
 
-                <div class="product-image">
+                <div class="blob"></div>
 
-                    <img
-                        src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=700&q=80"
-                        alt="Smartphone">
+                <div class="phone">
 
-                </div>
+                    <div class="phone-notch"></div>
 
-                <div class="product-info">
-
-                    <span class="category">Smartphones</span>
-
-                    <h3>Smartphone Pro 128GB</h3>
-
-                    <p class="description">
-                        Smartphone com tela de alta resolução e armazenamento
-                        de 128GB.
-                    </p>
-
-                    <div class="price">
-                        <span class="old-price">R$ 2.499,00</span>
-                        <span class="current-price">R$ 2.199,00</span>
+                    <div class="phone-content">
+                        <div class="check">✓</div>
                     </div>
 
-                    <p class="payment">
-                        Consulte condições de pagamento e disponibilidade.
-                    </p>
-
-                    <a href="#contato" class="btn btn-primary">
-                        Ver detalhes
-                    </a>
-
                 </div>
 
-            </article>
-
-            <!-- PRODUTO 2 -->
-            <article class="product">
-
-                <div class="product-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=80"
-                        alt="Notebook">
-
+                <div class="shield">
+                    ✓
                 </div>
 
-                <div class="product-info">
+            </div>
 
-                    <span class="category">Informática</span>
 
-                    <h3>Notebook 15,6"</h3>
+            <!-- BENEFÍCIOS -->
 
-                    <p class="description">
-                        Notebook para estudos, trabalho e atividades
-                        do dia a dia.
-                    </p>
+            <div class="features">
 
-                    <div class="price">
-                        <span class="old-price">R$ 3.999,00</span>
-                        <span class="current-price">R$ 3.499,00</span>
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ⌕
                     </div>
 
-                    <p class="payment">
-                        Consulte condições de pagamento e disponibilidade.
-                    </p>
+                    <strong>
+                        Consulte
+                    </strong>
 
-                    <a href="#contato" class="btn btn-primary">
-                        Ver detalhes
-                    </a>
-
-                </div>
-
-            </article>
-
-            <!-- PRODUTO 3 -->
-            <article class="product">
-
-                <div class="product-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80"
-                        alt="Fone de ouvido">
+                    <small>
+                        Veja as informações disponíveis
+                    </small>
 
                 </div>
 
-                <div class="product-info">
 
-                    <span class="category">Áudio</span>
+                <div class="feature">
 
-                    <h3>Fone Bluetooth</h3>
-
-                    <p class="description">
-                        Fone sem fio com conexão Bluetooth e design confortável.
-                    </p>
-
-                    <div class="price">
-                        <span class="old-price">R$ 399,00</span>
-                        <span class="current-price">R$ 299,00</span>
+                    <div class="feature-icon">
+                        ✓
                     </div>
 
-                    <p class="payment">
-                        Consulte condições de pagamento e disponibilidade.
-                    </p>
+                    <strong>
+                        Negocie
+                    </strong>
 
-                    <a href="#contato" class="btn btn-primary">
-                        Ver detalhes
-                    </a>
-
-                </div>
-
-            </article>
-
-            <!-- PRODUTO 4 -->
-            <article class="product">
-
-                <div class="product-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
-                        alt="Smartwatch">
+                    <small>
+                        Confira as opções disponíveis
+                    </small>
 
                 </div>
 
-                <div class="product-info">
 
-                    <span class="category">Wearables</span>
+                <div class="feature">
 
-                    <h3>Smartwatch</h3>
-
-                    <p class="description">
-                        Relógio inteligente com recursos para uso cotidiano.
-                    </p>
-
-                    <div class="price">
-                        <span class="old-price">R$ 599,00</span>
-                        <span class="current-price">R$ 449,00</span>
+                    <div class="feature-icon">
+                        ◷
                     </div>
 
-                    <p class="payment">
-                        Consulte condições de pagamento e disponibilidade.
-                    </p>
+                    <strong>
+                        Economize tempo
+                    </strong>
 
-                    <a href="#contato" class="btn btn-primary">
-                        Ver detalhes
-                    </a>
+                    <small>
+                        Processo simples e online
+                    </small>
 
                 </div>
 
-            </article>
 
-        </div>
+                <div class="feature">
 
-    </div>
+                    <div class="feature-icon">
+                        ◆
+                    </div>
 
-</section>
+                    <strong>
+                        Mais segurança
+                    </strong>
 
-<!-- CATEGORIAS -->
-<section id="categorias" class="categories">
+                    <small>
+                        Confira o domínio antes de prosseguir
+                    </small>
 
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>Categorias</h2>
-
-            <p>
-                Encontre produtos de diferentes categorias.
-            </p>
-
-        </div>
-
-        <div class="category-grid">
-
-            <div class="category-box">
-                <div class="icon">📱</div>
-                <h3>Smartphones</h3>
-                <p>Celulares e acessórios.</p>
-            </div>
-
-            <div class="category-box">
-                <div class="icon">💻</div>
-                <h3>Notebooks</h3>
-                <p>Computadores para diferentes necessidades.</p>
-            </div>
-
-            <div class="category-box">
-                <div class="icon">🎧</div>
-                <h3>Áudio</h3>
-                <p>Fones e equipamentos de áudio.</p>
-            </div>
-
-            <div class="category-box">
-                <div class="icon">⌚</div>
-                <h3>Wearables</h3>
-                <p>Relógios e dispositivos inteligentes.</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- SOBRE -->
-<section id="sobre" class="about">
-
-    <div class="container about-grid">
-
-        <div>
-
-            <h2>Sobre a TechStore</h2>
-
-            <p>
-                A TechStore é uma loja especializada em produtos
-                eletrônicos e acessórios para diferentes necessidades.
-            </p>
-
-            <p>
-                Nosso objetivo é oferecer informações claras sobre
-                produtos, preços, formas de pagamento, entrega e
-                atendimento.
-            </p>
-
-        </div>
-
-        <div>
-
-            <ul class="about-list">
-
-                <li>✓ Informações detalhadas dos produtos</li>
-                <li>✓ Atendimento ao consumidor</li>
-                <li>✓ Informações de pagamento</li>
-                <li>✓ Política de troca e devolução</li>
-                <li>✓ Política de privacidade</li>
-                <li>✓ Canais de contato disponíveis</li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- INFORMAÇÕES -->
-<section>
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>Informações importantes</h2>
-
-            <p>
-                Consulte as condições antes de realizar sua compra.
-            </p>
-
-        </div>
-
-        <div class="info-grid">
-
-            <div class="info-card">
-
-                <h3>🚚 Entrega</h3>
-
-                <p>
-                    O prazo e o valor do frete podem variar de acordo
-                    com o endereço de entrega e o produto escolhido.
-                    Consulte as condições antes da finalização da compra.
-                </p>
-
-            </div>
-
-            <div class="info-card">
-
-                <h3>💳 Pagamento</h3>
-
-                <p>
-                    As formas de pagamento disponíveis devem ser
-                    apresentadas no momento da compra. Consulte
-                    eventuais condições e parcelamentos.
-                </p>
-
-            </div>
-
-            <div class="info-card">
-
-                <h3>🔄 Trocas e devoluções</h3>
-
-                <p>
-                    Consulte nossa política de troca e devolução para
-                    conhecer os procedimentos, prazos e condições
-                    aplicáveis aos pedidos.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- FAQ -->
-<section id="faq" style="background:#f3f4f6;">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>Perguntas frequentes</h2>
-
-            <p>Veja algumas dúvidas comuns dos clientes.</p>
-
-        </div>
-
-        <div class="faq">
-
-            <details>
-                <summary>Como posso comprar um produto?</summary>
-
-                <p>
-                    Selecione o produto desejado e siga as instruções
-                    disponíveis na página de compra. Caso tenha dúvidas,
-                    entre em contato com nossa equipe.
-                </p>
-            </details>
-
-            <details>
-                <summary>Quais são as formas de pagamento?</summary>
-
-                <p>
-                    As formas de pagamento disponíveis são informadas
-                    durante o processo de compra.
-                </p>
-            </details>
-
-            <details>
-                <summary>Qual é o prazo de entrega?</summary>
-
-                <p>
-                    O prazo depende do endereço de entrega, estoque e
-                    modalidade de envio selecionada.
-                </p>
-            </details>
-
-            <details>
-                <summary>Posso solicitar troca ou devolução?</summary>
-
-                <p>
-                    Sim, observadas as condições e os prazos estabelecidos
-                    na política de troca e devolução da loja.
-                </p>
-            </details>
-
-            <details>
-                <summary>Como entro em contato?</summary>
-
-                <p>
-                    Utilize os canais de atendimento apresentados na seção
-                    de contato desta página.
-                </p>
-            </details>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- CONTATO -->
-<section id="contato" class="contact">
-
-    <div class="container">
-
-        <div class="section-title">
-
-            <h2>Entre em contato</h2>
-
-            <p>
-                Nossa equipe está disponível para ajudar.
-            </p>
-
-        </div>
-
-        <div class="contact-grid">
-
-            <div class="contact-card">
-
-                <h3>Informações da empresa</h3>
-
-                <!-- SUBSTITUA TODOS OS DADOS ABAIXO -->
-
-                <div class="contact-item">
-                    <strong>Empresa</strong>
-                    <span>TechStore Comércio de Eletrônicos LTDA</span>
-                </div>
-
-                <div class="contact-item">
-                    <strong>CNPJ</strong>
-                    <span>00.000.000/0001-00</span>
-                </div>
-
-                <div class="contact-item">
-                    <strong>Endereço</strong>
-                    <span>
-                        Rua Exemplo, 100 - Centro<br>
-                        São Paulo - SP
-                    </span>
-                </div>
-
-                <div class="contact-item">
-                    <strong>E-mail</strong>
-                    <span>atendimento@seusite.com.br</span>
-                </div>
-
-                <div class="contact-item">
-                    <strong>Telefone</strong>
-                    <span>(11) 0000-0000</span>
-                </div>
-
-                <div class="contact-item">
-                    <strong>Horário</strong>
-                    <span>
-                        Segunda a sexta, das 9h às 18h
-                    </span>
                 </div>
 
             </div>
 
-            <div class="contact-card">
 
-                <h3>Envie uma mensagem</h3>
+            <!-- BOTÃO -->
 
-                <form onsubmit="enviarFormulario(event)">
+            <a
+                class="cta"
+                href="https://elegant-desenrola.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
 
-                    <input
-                        type="text"
-                        name="nome"
-                        placeholder="Seu nome"
-                        required
-                    >
+                <span>
+                    Prosseguir para a consulta
+                </span>
 
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Seu e-mail"
-                        required
-                    >
+                <span class="cta-arrow">
+                    →
+                </span>
 
-                    <input
-                        type="tel"
-                        name="telefone"
-                        placeholder="Seu telefone"
-                    >
+            </a>
 
-                    <textarea
-                        name="mensagem"
-                        placeholder="Como podemos ajudar?"
-                        required
-                    ></textarea>
 
-                    <button class="btn btn-primary" type="submit">
-                        Enviar mensagem
-                    </button>
+            <div class="time">
+                ⏱ Consulta em menos de 2 minutos
+            </div>
 
-                </form>
+
+            <!-- AVISO -->
+
+            <div class="warning">
+
+                <div class="warning-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <strong>Importante:</strong>
+
+                    esta é uma página independente e não
+                    representa, por si só, um canal oficial
+                    do Governo Federal.
+
+                    Verifique a origem e o domínio antes
+                    de fornecer dados pessoais.
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
 
-</section>
+        <!-- FOOTER -->
 
-<!-- FOOTER -->
-<footer>
+        <footer class="footer">
 
-    <div class="container">
+            Consulte informações oficiais diretamente
+            em canais governamentais antes de compartilhar
+            dados pessoais.
 
-        <div class="footer-grid">
-
-            <div>
-
-                <h3>TechStore</h3>
-
-                <p>
-                    Produtos eletrônicos e acessórios para o seu dia a dia.
-                </p>
-
-                <p style="margin-top:12px;">
-                    CNPJ: 00.000.000/0001-00
-                </p>
-
+            <div class="steps">
+                <span class="step active"></span>
+                <span class="step"></span>
+                <span class="step"></span>
             </div>
 
-            <div>
+        </footer>
 
-                <h4>Loja</h4>
+    </section>
 
-                <a href="#produtos">Produtos</a>
-                <a href="#categorias">Categorias</a>
-                <a href="#contato">Contato</a>
-
-            </div>
-
-            <div>
-
-                <h4>Atendimento</h4>
-
-                <a href="#faq">Perguntas frequentes</a>
-                <a href="trocas-e-devolucoes.html">
-                    Trocas e devoluções
-                </a>
-
-                <a href="entrega.html">
-                    Entrega
-                </a>
-
-            </div>
-
-            <div>
-
-                <h4>Privacidade</h4>
-
-                <a href="politica-de-privacidade.html">
-                    Política de privacidade
-                </a>
-
-                <a href="termos-de-uso.html">
-                    Termos de uso
-                </a>
-
-                <a href="cookies.html">
-                    Política de cookies
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="copyright">
-
-            © 2026 TechStore. Todos os direitos reservados.
-
-        </div>
-
-    </div>
-
-</footer>
-
-<!-- COOKIE -->
-<div class="cookie" id="cookieBanner">
-
-    <div class="cookie-content">
-
-        <p>
-            Utilizamos cookies para melhorar sua experiência no site,
-            analisar o uso da página e, quando aplicável, personalizar
-            conteúdos. Consulte nossa Política de Cookies para mais
-            informações.
-        </p>
-
-        <button
-            class="btn btn-primary"
-            onclick="aceitarCookies()">
-            Aceitar
-        </button>
-
-    </div>
-
-</div>
-
-<script>
-
-    function aceitarCookies() {
-
-        localStorage.setItem("cookiesAceitos", "true");
-
-        document.getElementById("cookieBanner").style.display = "none";
-    }
-
-    function verificarCookies() {
-
-        if (!localStorage.getItem("cookiesAceitos")) {
-
-            document.getElementById("cookieBanner").style.display = "block";
-
-        }
-
-    }
-
-    function enviarFormulario(event) {
-
-        event.preventDefault();
-
-        alert(
-            "Mensagem registrada. Configure o formulário para enviá-la ao seu sistema de atendimento."
-        );
-
-    }
-
-    verificarCookies();
-
-</script>
+</main>
 
 </body>
 </html>
